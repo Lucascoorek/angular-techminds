@@ -1,18 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { AppComponent } from "./app.component";
+import { MainComponent } from "./components/main/main.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NavbarComponent } from "./layout/navbar/navbar.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
+import { LandingComponent } from "./layout/landing/landing.component";
+import { HttpClientModule } from "@angular/common/http";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
+const routes: Routes = [
+  { path: "landing", component: LandingComponent },
+  { path: "main", component: MainComponent },
+  { path: "", component: LandingComponent }
+];
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    NavbarComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
