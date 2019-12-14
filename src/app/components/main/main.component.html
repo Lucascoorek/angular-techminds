@@ -1,6 +1,21 @@
 <div>
   <section>
-    <h1>Chose your product</h1>
-    <p>lorem3000</p>
+    <h1>Chose your products</h1>
+    <ul>
+      <li *ngFor="let product of products" (click)="goTo(product.id)">
+        <div class="product__card">
+          <img [src]="product.img" alt="" />
+          <p class="product__card product__card--name">{{ product.name }}</p>
+          <p>
+            <span class="product__card product__card--old-price">{{
+              product.oldPrice
+            }}</span
+            ><span class="product__card product__card--new-price">{{
+              product.price
+            }}</span>
+          </p>
+        </div>
+      </li>
+    </ul>
   </section>
 </div>

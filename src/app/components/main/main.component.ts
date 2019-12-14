@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FetchService } from "src/app/services/fetch.service";
+import { Router } from "@angular/router";
+import { Product } from "src/app/models/Product";
 
 @Component({
   selector: "app-main",
@@ -7,11 +9,13 @@ import { FetchService } from "src/app/services/fetch.service";
   styleUrls: ["./main.component.css"]
 })
 export class MainComponent implements OnInit {
-  data: [];
-  constructor(private fetchService: FetchService) {}
+  products: Product[];
+  constructor(private fetchService: FetchService, private router: Router) {}
 
   ngOnInit() {
-    this.data = this.fetchService.data;
-    console.log(this.data);
+    this.products = this.fetchService.data;
+  }
+  goTo(id: number) {
+    this.router.navigate(["/product", id]);
   }
 }

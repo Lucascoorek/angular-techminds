@@ -1,24 +1,20 @@
 @import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 :root {
   --primary-color: #673ab7;
   --primary-light: #9a67ea;
   --primary-dark: #320b86;
+  --accent-color: #ffc107;
 }
-body,
-html {
-  height: 100%;
-}
-body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 html,
 body {
   height: 100%;
 }
 body {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 0;
+  background-color: var(--primary-light);
+  line-height: 1.6em;
 }

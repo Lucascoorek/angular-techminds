@@ -9,10 +9,12 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { LandingComponent } from "./layout/landing/landing.component";
 import { HttpClientModule } from "@angular/common/http";
+import { ProductComponent } from "./components/product/product.component";
 
 const routes: Routes = [
   { path: "landing", component: LandingComponent },
   { path: "main", component: MainComponent },
+  { path: "product/:id", component: ProductComponent },
   { path: "", component: LandingComponent }
 ];
 @NgModule({
@@ -20,7 +22,8 @@ const routes: Routes = [
     AppComponent,
     MainComponent,
     NavbarComponent,
-    LandingComponent
+    LandingComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
