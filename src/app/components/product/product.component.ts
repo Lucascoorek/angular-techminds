@@ -14,6 +14,8 @@ export class ProductComponent implements OnInit {
   public product: Product;
   public options: any;
   public price: number;
+  Color: string = "";
+  Capacity: string = "";
 
   constructor(
     private _route: ActivatedRoute,

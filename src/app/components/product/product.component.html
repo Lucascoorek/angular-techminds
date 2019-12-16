@@ -6,13 +6,29 @@
       <span id="product__details--price">{{ price }} </span>
     </p>
     <form #selectForm="ngForm" class="product__details--form">
-      <mat-form-field
-        *ngFor="let option of options"
-        color="accent"
-        appearance="outline"
-      >
-        <mat-select [placeholder]="option.name" [name]="option.name" ngModel>
-          <mat-option *ngFor="let value of option.values" [value]="value.name"
+      <mat-form-field color="accent" appearance="outline">
+        <mat-select
+          [placeholder]="options[1].name"
+          [name]="options[0].name"
+          [(ngModel)]="Color"
+        >
+          <mat-option
+            *ngFor="let value of options[0].values"
+            [value]="value.name"
+            >{{ value.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field color="accent" appearance="outline">
+        <mat-select
+          [placeholder]="options[1].name"
+          [name]="options[1].name"
+          [(ngModel)]="Capacity"
+        >
+          <mat-option
+            *ngFor="let value of options[1].values"
+            [value]="value.name"
             >{{ value.name }}
           </mat-option>
         </mat-select>
@@ -23,5 +39,7 @@
       </button>
     </form>
     {{ selectForm.value | json }}
+    {{ Color }}
+    {{ Capacity }}
   </div>
 </div>
