@@ -4,7 +4,7 @@
   --primary-color: #673ab7;
   --primary-light: #9a67ea;
   --primary-dark: #320b86;
-  --accent-color: #ffc107;
+  --accent-color: #f7d03e;
 }
 html,
 body {
@@ -12,9 +12,22 @@ body {
 }
 body {
   font-family: "Montserrat", sans-serif;
+  font-size: 18px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   background-color: var(--primary-light);
   line-height: 1.6em;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.2s;
+  color: var(--accent-color);
+}
+a:hover {
+  opacity: 0.8;
+}
+.btn {
+  display: block;
 }

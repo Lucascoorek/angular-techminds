@@ -1,1 +1,27 @@
-<p>product works!</p>
+<div class="product__details">
+  <img [src]="product.img" [alt]="product.name" />
+  <div class="product__details--data">
+    <h1>{{ product.name }}</h1>
+    <p>
+      <span id="product__details--price">{{ price }} </span>
+    </p>
+    <form #selectForm="ngForm" class="product__details--form">
+      <mat-form-field
+        *ngFor="let option of options"
+        color="accent"
+        appearance="outline"
+      >
+        <mat-select [placeholder]="option.name" [name]="option.name" ngModel>
+          <mat-option *ngFor="let value of option.values" [value]="value.name"
+            >{{ value.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button class="btn" type="submit" mat-flat-button color="accent">
+        Buy
+      </button>
+    </form>
+    {{ selectForm.value | json }}
+  </div>
+</div>

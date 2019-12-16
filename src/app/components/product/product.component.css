@@ -1,0 +1,30 @@
+.product__details {
+  display: flex;
+  padding: 100px 20px 20px 20px;
+  color: #ffffff;
+}
+.product__details img {
+  width: 50%;
+  display: block;
+}
+.product__details--data {
+  padding: 0;
+  text-align: center;
+  flex-grow: 1;
+  flex-direction: column;
+}
+.product__details--data h1 {
+  width: 100%;
+}
+product__details--form {
+  width: 100%;
+}
+mat-form-field {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+#product__details--price {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
