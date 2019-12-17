@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { CartService } from "src/app/services/cart.service";
 
 @Component({
   selector: "app-product-form",
@@ -6,11 +7,18 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./product-form.component.css"]
 })
 export class ProductFormComponent implements OnInit {
-  @Input() option: any;
+  cart: object;
+  cartSubscription;
 
-  constructor() {}
+  constructor(private _cartService: CartService) {}
 
   ngOnInit() {
-    console.log(this.option);
+    this.cartSubscription = this._cartService.cart$.subscribe(val => {
+      this.cart = val;
+      console.log(this.cart);
+    });
+  }
+  ngOnDestroy() {
+    this.cartSubscription.unsubscribe();
   }
 }

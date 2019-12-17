@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { FetchService } from "src/app/services/fetch.service";
 import { Product } from "src/app/models/Product";
 import { NgForm } from "@angular/forms";
+import { CartService } from "src/app/services/cart.service";
 
 @Component({
   selector: "app-product",
@@ -17,10 +18,13 @@ export class ProductComponent implements OnInit {
   public price: number;
   public productForm: any;
   public error: boolean;
+  formSubscripion;
 
   constructor(
     private _route: ActivatedRoute,
-    private _fetchService: FetchService
+    private _router: Router,
+    private _fetchService: FetchService,
+    private _cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -33,7 +37,7 @@ export class ProductComponent implements OnInit {
     this.options = this.product.options;
     this.price = this.product.price;
     this.productForm = this.fillForm();
-    this.ngForm.form.valueChanges.subscribe(form => {
+    this.formSubscripion = this.ngForm.form.valueChanges.subscribe(form => {
       console.log(form);
       this.price = this.product.price;
       let arr = Object.values(form);
@@ -64,6 +68,15 @@ export class ProductComponent implements OnInit {
     let arr = Object.values(this.productForm);
     this.error = arr.some(el => el === "");
     if (this.error) return;
-    console.log("submitted");
+    const cart = {
+      ...this.productForm,
+      price: this.price,
+      name: this.product.name
+    };
+    this._cartService.addToCart(cart);
+    this._router.navigate(["/cart"]);
+  }
+  ngOnDestroy(): void {
+    this.formSubscripion.unsubscribe();
   }
 }

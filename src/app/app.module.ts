@@ -13,11 +13,12 @@ import { MatSelectModule } from "@angular/material/select";
 import { LandingComponent } from "./layout/landing/landing.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ProductComponent } from "./components/product/product.component";
-import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductFormComponent } from "./components/product-form/product-form.component";
 
 const routes: Routes = [
   { path: "landing", component: LandingComponent },
   { path: "main", component: MainComponent },
+  { path: "cart", component: ProductFormComponent },
   { path: "product/:id", component: ProductComponent },
   { path: "", component: LandingComponent }
 ];
