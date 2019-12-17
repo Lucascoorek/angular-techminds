@@ -6,11 +6,11 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./product-form.component.css"]
 })
 export class ProductFormComponent implements OnInit {
-  @Input() values: [];
+  @Input() option: any;
 
   constructor() {}
 
   ngOnInit() {
-    console.log(this.values);
+    console.log(this.option);
   }
 }

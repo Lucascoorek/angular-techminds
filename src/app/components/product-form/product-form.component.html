@@ -1,1 +1,12 @@
-<p>product-form</p>
+<mat-form-field color="accent" appearance="outline">
+  <mat-select
+    [placeholder]="option.name"
+    [name]="option.name"
+    [(ngModel)]="option.name"
+  >
+    <mat-option *ngFor="let value of option.values" [value]="value"
+      >{{ value.name }}
+    </mat-option>
+  </mat-select>
+  {{ option.name | json }}
+</mat-form-field>

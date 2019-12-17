@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { FetchService } from "src/app/services/fetch.service";
-import { Product } from "src/app/models/Product";
+import { Product, ProductForm } from "src/app/models/Product";
 import { FormBuilder, FormArray, FormControl, FormGroup } from "@angular/forms";
 
 @Component({
@@ -14,8 +14,7 @@ export class ProductComponent implements OnInit {
   public product: Product;
   public options: any;
   public price: number;
-  Color: string = "";
-  Capacity: string = "";
+  public productForm: any;
 
   constructor(
     private _route: ActivatedRoute,
@@ -53,5 +52,16 @@ export class ProductComponent implements OnInit {
     //     })
     //   ])
     // });
+    this.productForm = this.fillForm();
+  }
+  // trackByFn(index, item) {
+  //   return index; // or item.id
+  // }
+  fillForm() {
+    let obj = {};
+    this.options.forEach(element => {
+      obj[element.name] = "";
+    });
+    return obj;
   }
 }
