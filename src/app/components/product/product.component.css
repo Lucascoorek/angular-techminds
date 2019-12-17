@@ -5,6 +5,7 @@
 }
 .product__details img {
   width: 50%;
+  height: 50%;
   display: block;
 }
 .product__details--data {
@@ -27,4 +28,7 @@ mat-form-field {
 #product__details--price {
   color: var(--accent-color);
   font-size: 1.2rem;
+}
+.product__details--error {
+  color: var(--warning-color);
 }

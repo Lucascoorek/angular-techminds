@@ -2,13 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { FetchService } from "src/app/services/fetch.service";
 import { Product } from "src/app/models/Product";
-import {
-  FormBuilder,
-  FormArray,
-  FormControl,
-  FormGroup,
-  NgForm
-} from "@angular/forms";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-product",
@@ -22,10 +16,11 @@ export class ProductComponent implements OnInit {
   public options: any;
   public price: number;
   public productForm: any;
+  public error: boolean;
 
   constructor(
     private _route: ActivatedRoute,
-    private _fetchService: FetchService //   private fb: FormBuilder
+    private _fetchService: FetchService
   ) {}
 
   ngOnInit() {
@@ -37,33 +32,10 @@ export class ProductComponent implements OnInit {
     console.log(this.product);
     this.options = this.product.options;
     this.price = this.product.price;
-
-    // this.selectForm.valueChanges.subscribe(val => {
-    //   console.log(val);
-    //   if (val.color) {
-    //     const selected = this.options.find(prod => {
-    //       prod.name === val.color;
-    //     });
-    //     console.log(selected);
-    //   }
-    // });
-    // this.selectForm = this.fb.group({
-    //   Color: [""],
-    //   Capacity: [""]
-    // });
-    // this.selectForm = this.fb.group({
-    //   options: this.fb.array([
-    //     this.fb.group({
-    //       Color: [null],
-    //       Capacity: [null]
-    //     })
-    //   ])
-    // });
     this.productForm = this.fillForm();
-    console.log(this.productForm);
     this.ngForm.form.valueChanges.subscribe(form => {
+      console.log(form);
       this.price = this.product.price;
-      console.log(Object.values(form));
       let arr = Object.values(form);
       let count = 0;
       arr.forEach(value => {
@@ -76,7 +48,6 @@ export class ProductComponent implements OnInit {
       } else {
         this.price = this.product.price;
       }
-      console.log(count);
     });
   }
   // trackByFn(index, item) {
@@ -88,5 +59,11 @@ export class ProductComponent implements OnInit {
       obj[element.name] = "";
     });
     return obj;
+  }
+  onSubmit() {
+    let arr = Object.values(this.productForm);
+    this.error = arr.some(el => el === "");
+    if (this.error) return;
+    console.log("submitted");
   }
 }

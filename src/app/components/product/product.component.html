@@ -5,7 +5,11 @@
     <p>
       <span id="product__details--price">{{ price }} </span>
     </p>
-    <form #selectForm="ngForm" class="product__details--form">
+    <form
+      #selectForm="ngForm"
+      class="product__details--form"
+      (ngSubmit)="onSubmit()"
+    >
       <div *ngFor="let option of options; let i = index">
         <mat-form-field color="accent" appearance="outline">
           <mat-select
@@ -21,7 +25,9 @@
           </mat-select>
         </mat-form-field>
       </div>
-
+      <div class="product__details--error" *ngIf="error">
+        Please choose available options
+      </div>
       <button class="btn" type="submit" mat-flat-button color="accent">
         Buy
       </button>
