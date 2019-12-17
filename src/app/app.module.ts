@@ -13,6 +13,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { LandingComponent } from "./layout/landing/landing.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ProductComponent } from "./components/product/product.component";
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 const routes: Routes = [
   { path: "landing", component: LandingComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
     MainComponent,
     NavbarComponent,
     LandingComponent,
-    ProductComponent
+    ProductComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
