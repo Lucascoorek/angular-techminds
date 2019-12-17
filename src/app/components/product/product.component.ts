@@ -1,8 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { FetchService } from "src/app/services/fetch.service";
-import { Product, ProductForm } from "src/app/models/Product";
-import { FormBuilder, FormArray, FormControl, FormGroup } from "@angular/forms";
+import { Product } from "src/app/models/Product";
+import {
+  FormBuilder,
+  FormArray,
+  FormControl,
+  FormGroup,
+  NgForm
+} from "@angular/forms";
 
 @Component({
   selector: "app-product",
@@ -10,6 +16,7 @@ import { FormBuilder, FormArray, FormControl, FormGroup } from "@angular/forms";
   styleUrls: ["./product.component.css"]
 })
 export class ProductComponent implements OnInit {
+  @ViewChild("selectForm", { static: true }) ngForm: NgForm;
   public productId: number;
   public product: Product;
   public options: any;
@@ -53,6 +60,24 @@ export class ProductComponent implements OnInit {
     //   ])
     // });
     this.productForm = this.fillForm();
+    console.log(this.productForm);
+    this.ngForm.form.valueChanges.subscribe(form => {
+      this.price = this.product.price;
+      console.log(Object.values(form));
+      let arr = Object.values(form);
+      let count = 0;
+      arr.forEach(value => {
+        if (value["priceModifier"] && value["priceModifier"] !== "") {
+          count += parseInt(value["priceModifier"]);
+        }
+      });
+      if (count !== 0) {
+        this.price = Math.round(this.price * (1 + count / 100) * 100) / 100;
+      } else {
+        this.price = this.product.price;
+      }
+      console.log(count);
+    });
   }
   // trackByFn(index, item) {
   //   return index; // or item.id

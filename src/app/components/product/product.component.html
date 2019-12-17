@@ -10,7 +10,7 @@
         <mat-form-field color="accent" appearance="outline">
           <mat-select
             [placeholder]="option.name"
-            name="options[i].name"
+            [name]="options[i].name"
             [(ngModel)]="productForm[options[i].name]"
           >
             <mat-option
@@ -26,7 +26,5 @@
         Buy
       </button>
     </form>
-
-    {{ productForm | json }}
   </div>
 </div>
