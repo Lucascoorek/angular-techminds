@@ -10,6 +10,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
+import { MatInputModule } from "@angular/material/input";
 import { LandingComponent } from "./layout/landing/landing.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ProductComponent } from "./components/product/product.component";
@@ -41,7 +42,8 @@ const routes: Routes = [
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

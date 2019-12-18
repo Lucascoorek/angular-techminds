@@ -1,3 +1,146 @@
 <div class="product__form">
-  <div>Product form</div>
+  <div class="product__form-wrapper">
+    <div *ngIf="success; then thenBlock; else elseBlock"></div>
+    <ng-template #thenBlock>
+      <div class="product__form--succes">
+        Success!
+      </div>
+    </ng-template>
+    <ng-template #elseBlock>
+      <div>
+        <p>Your product</p>
+        <h1>{{ cart.name }}</h1>
+      </div>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              placeholder="Name"
+              required
+              formControlName="name"
+            />
+            <mat-error *ngIf="userForm.get('name').errors?.required"
+              >Name is required
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Surname</mat-label>
+            <input
+              matInput
+              placeholder="Surname"
+              required
+              formControlName="surname"
+            />
+            <mat-error *ngIf="userForm.get('surname').errors?.required"
+              >Surname is required
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="Email"
+              inputmode="email"
+              required
+              formControlName="email"
+            />
+            <mat-error
+              *ngIf="
+                userForm.get('email').errors?.required &&
+                !userForm.get('email').errors?.email
+              "
+              >Email is required
+            </mat-error>
+            <mat-error *ngIf="userForm.get('email').errors?.email"
+              >Email not valid
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <div formGroupName="address">
+          <p>Address:</p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input
+                matInput
+                placeholder="City"
+                required
+                formControlName="city"
+              />
+              <mat-error
+                *ngIf="userForm.get('address').get('city').errors?.required"
+                >City is required
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Street</mat-label>
+              <input
+                matInput
+                placeholder="Street"
+                required
+                formControlName="street"
+              />
+              <mat-error
+                *ngIf="userForm.get('address').get('street').errors?.required"
+                >Street is required
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>House number</mat-label>
+              <input
+                matInput
+                placeholder="House number"
+                required
+                type="text"
+                inputmode="numeric"
+                formControlName="houseNumber"
+              />
+              <mat-error
+                *ngIf="
+                  userForm.get('address').get('houseNumber').errors?.required
+                "
+                >Name is required
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Postcode</mat-label>
+              <input
+                matInput
+                placeholder="Postcode"
+                required
+                type="text"
+                inputmode="numeric"
+                formControlName="postcode"
+              />
+              <mat-error
+                *ngIf="userForm.get('address').get('postcode').errors?.required"
+                >Postcode is required
+              </mat-error>
+            </mat-form-field>
+          </p>
+        </div>
+        <button
+          [disabled]="!userForm.valid"
+          class="btn"
+          type="submit"
+          mat-flat-button
+          color="accent"
+        >
+          Buy
+        </button>
+      </form>
+    </ng-template>
+  </div>
 </div>

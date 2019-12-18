@@ -68,10 +68,17 @@ export class ProductComponent implements OnInit {
     let arr = Object.values(this.productForm);
     this.error = arr.some(el => el === "");
     if (this.error) return;
+    const options = [];
+    for (let prop in this.productForm) {
+      if (this.productForm.hasOwnProperty(prop)) {
+        options.push(this.productForm[prop]);
+      }
+    }
     const cart = {
-      ...this.productForm,
-      price: this.price,
-      name: this.product.name
+      options,
+      amount: this.price,
+      name: this.product.name,
+      id: this.product.id
     };
     this._cartService.addToCart(cart);
     this._router.navigate(["/cart"]);
