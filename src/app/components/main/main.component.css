@@ -1,4 +1,4 @@
-div {
+.product__card--wrapper {
   padding-top: 100px;
   text-align: center;
   color: #fff;
@@ -13,19 +13,22 @@ ul {
 .product__card {
   padding: 20px;
 }
-.product__card img {
+.product__card--img {
   width: 300px;
+  height: 300px;
   transition: 0.2s;
 }
+.product__card--img:hover {
+  opacity: 0.8;
+}
+
 .product__card--name {
   transition: 0.3s;
 }
 .product__card:hover {
   cursor: pointer;
 }
-.product__card:hover img {
-  opacity: 0.8;
-}
+
 .product__card:hover .product__card--name {
   color: var(--accent-color);
 }

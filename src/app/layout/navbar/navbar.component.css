@@ -5,3 +5,11 @@ header {
   top: 0;
   left: 0;
 }
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+.header__logo h1 {
+  margin-left: 10px;
+  font-family: "Montserrat";
+}

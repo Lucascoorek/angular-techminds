@@ -33,12 +33,10 @@ export class ProductComponent implements OnInit {
       this.productId = id;
     });
     this.product = this._fetchService.getProductById(this.productId);
-    console.log(this.product);
     this.options = this.product.options;
     this.price = this.product.price;
     this.productForm = this.fillForm();
     this.formSubscripion = this.ngForm.form.valueChanges.subscribe(form => {
-      console.log(form);
       this.price = this.product.price;
       let arr = Object.values(form);
       let count = 0;
@@ -54,9 +52,6 @@ export class ProductComponent implements OnInit {
       }
     });
   }
-  // trackByFn(index, item) {
-  //   return index; // or item.id
-  // }
   fillForm() {
     let obj = {};
     this.options.forEach(element => {

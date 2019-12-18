@@ -33,3 +33,8 @@ a:hover {
 .btn {
   display: block;
 }
+.btn-large {
+  font-size: 2rem;
+  width: 200px;
+  height: 60px;
+}

@@ -1,9 +1,14 @@
 <div class="product__details">
-  <img [src]="product.img" [alt]="product.name" />
+  <div
+    class="product__details--img"
+    [ngStyle]="{
+      background: 'url(' + product.img + ') no-repeat center center/cover'
+    }"
+  ></div>
   <div class="product__details--data">
     <h1>{{ product.name }}</h1>
     <p>
-      <span id="product__details--price">{{ price }} </span>
+      <span id="product__details--price">{{ price }} PLN</span>
     </p>
     <form
       #selectForm="ngForm"

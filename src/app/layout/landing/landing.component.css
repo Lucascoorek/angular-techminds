@@ -1,7 +1,11 @@
-div {
+.landing__wrapper {
   height: 100%;
-  background: var(--primary-light);
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("../../../assets/img/shopping.jpg") no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+button {
+  font-family: "Montserrat";
 }

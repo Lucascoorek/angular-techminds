@@ -2,11 +2,14 @@
   display: flex;
   padding: 100px 20px 20px 20px;
   color: #ffffff;
+  max-width: 900px;
+  margin: 0 auto;
 }
-.product__details img {
+
+.product__details--img {
+  min-width: 300px;
   width: 50%;
-  height: 50%;
-  display: block;
+  min-height: 400px;
 }
 .product__details--data {
   padding: 0;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { CartService } from "src/app/services/cart.service";
 import { FormBuilder, Validators } from "@angular/forms";
 
@@ -17,7 +17,6 @@ export class ProductFormComponent implements OnInit {
   ngOnInit() {
     this.cartSubscription = this._cartService.cart$.subscribe(val => {
       this.cart = val;
-      console.log(this.cart);
     });
   }
   ngOnDestroy() {
@@ -41,5 +40,6 @@ export class ProductFormComponent implements OnInit {
     };
     this._cartService.addToCart(cartData);
     this.success = true;
+    console.log(this.cart);
   }
 }

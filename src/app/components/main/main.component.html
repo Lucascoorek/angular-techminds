@@ -1,18 +1,23 @@
-<div>
+<div class="product__card--wrapper">
   <section>
-    <h1>Chose your products</h1>
+    <h1>Chose your product</h1>
     <ul>
       <li *ngFor="let product of products" (click)="goTo(product.id)">
         <div class="product__card">
-          <img [src]="product.img" alt="" />
+          <div
+            class="product__card--img"
+            [ngStyle]="{
+              background:
+                'url(' + product.img + ') no-repeat center center/cover'
+            }"
+          ></div>
           <p class="product__card product__card--name">{{ product.name }}</p>
           <p>
-            <span class="product__card product__card--old-price">{{
-              product.oldPrice
-            }}</span
-            ><span class="product__card product__card--new-price">{{
-              product.price
-            }}</span>
+            <span class="product__card product__card--old-price"
+              >{{ product.oldPrice }} PLN</span
+            ><span class="product__card product__card--new-price"
+              >{{ product.price }} PLN</span
+            >
           </p>
         </div>
       </li>
