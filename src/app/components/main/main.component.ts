@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FetchService } from "src/app/services/fetch.service";
 import { Router } from "@angular/router";
 import { Product } from "src/app/models/Product";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-main",
@@ -15,7 +14,6 @@ export class MainComponent implements OnInit {
   constructor(private fetchService: FetchService, private router: Router) {}
 
   ngOnInit() {
-    this.products = this.fetchService.data;
     this.subscription = this.fetchService.dataSource$.subscribe(data => {
       this.products = data;
     });

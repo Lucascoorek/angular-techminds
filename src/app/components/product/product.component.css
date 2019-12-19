@@ -4,10 +4,11 @@
   color: #ffffff;
   max-width: 900px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .product__details--img {
-  min-width: 300px;
+  min-width: 400px;
   width: 50%;
   min-height: 400px;
 }
@@ -29,9 +30,27 @@ mat-form-field {
   margin: 0 auto;
 }
 #product__details--price {
-  color: var(--accent-color);
+  color: var(--primary-color);
   font-size: 1.2rem;
 }
 .product__details--error {
   color: var(--warning-color);
+}
+
+@media only screen and (max-width: 720px) {
+  .product__details {
+    flex-direction: column;
+  }
+  .product__details--img {
+    margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .product__details--img {
+    min-width: 300px;
+    min-height: 300px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
 }

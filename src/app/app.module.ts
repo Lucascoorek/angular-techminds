@@ -16,6 +16,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { ProductComponent } from "./components/product/product.component";
 import { ProductFormComponent } from "./components/product-form/product-form.component";
 import { MatIconModule } from "@angular/material/icon";
+import { HashLocationStrategy, LocationStrategy } from "@angular/common";
+import { ChristmasComponent } from './components/svg/christmas/christmas.component';
 
 const routes: Routes = [
   { path: "landing", component: LandingComponent },
@@ -32,7 +34,8 @@ const routes: Routes = [
     NavbarComponent,
     LandingComponent,
     ProductComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ChristmasComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ const routes: Routes = [
     MatInputModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

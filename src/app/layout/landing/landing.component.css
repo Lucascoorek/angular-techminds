@@ -1,11 +1,63 @@
 .landing__wrapper {
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-    url("../../../assets/img/shopping.jpg") no-repeat center center/cover;
+    url("../../../assets/img/iphone-2400.jpg") no-repeat center center/cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--accent-color);
+}
+p {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in 1s forwards;
+}
+h1 {
+  font-size: 6rem;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in 1s forwards;
 }
 button {
   font-family: "Montserrat";
+  opacity: 0;
+  border-radius: 50px;
+  animation: fadeIn 1.5s ease-in 1s forwards;
+  transition: 0.2s ease-in;
+}
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+button:hover {
+  background-color: var(--warning-color);
+}
+app-christmas {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in 1s forwards;
+  fill: var(--accent-color);
+}
+@media only screen and (max-width: 1024px) {
+  .landing__wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+      url("../../../assets/img/iphone-1024.jpeg") no-repeat center center/cover;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .landing__wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+      url("../../../assets/img/iphone-768.jpeg") no-repeat center center/cover;
+  }
+}
+@media only screen and (max-width: 430px) {
+  h1 {
+    font-size: 5rem;
+  }
+}
+@media only screen and (max-width: 360px) {
+  h1 {
+    font-size: 4rem;
+  }
 }

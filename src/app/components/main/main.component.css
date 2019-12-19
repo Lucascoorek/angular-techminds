@@ -1,7 +1,6 @@
 .product__card--wrapper {
   padding-top: 100px;
   text-align: center;
-  color: #fff;
 }
 ul {
   list-style-type: none;
@@ -30,13 +29,31 @@ ul {
 }
 
 .product__card:hover .product__card--name {
-  color: var(--accent-color);
+  color: var(--primary-color);
 }
 
 .product__card--old-price {
   text-decoration: line-through;
-  color: #000;
+  color: #aaa;
 }
 .product__card--new-price {
-  color: var(--accent-color);
+  color: var(--primary-color);
+}
+@media only screen and (max-width: 720px) {
+  ul {
+    flex-direction: column;
+  }
+  .product__card--img {
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product__card {
+    padding: 0;
+  }
+  .product__card--old-price,
+  .product__card--new-price {
+    margin: 0 5px;
+  }
 }

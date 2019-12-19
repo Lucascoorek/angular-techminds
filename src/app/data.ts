@@ -2,7 +2,7 @@ export const data = JSON.parse(`[
   {
     "id": 1,
     "name": "iPhone 8",
-    "img": "https://stat-m3.ms-online.pl/media/cache/gallery/rc/t6zfvcue/images/20/20503840/iPhone8-SpGry-PureAngles_GB-EN-SCREEN_1.jpg",
+    "img": "https://stat-m6.ms-online.pl/media/cache/gallery/rc/zesvqvgd/images/20/20503840/iPhone8-SpGry_0.png",
     "price": 99.99,
     "oldPrice": 599.0,
     "options": [
@@ -12,7 +12,7 @@ export const data = JSON.parse(`[
         "values": [
           {
             "id": 1000,
-            "name": "Silver",
+            "name": "Silver", 
             "priceModifier": 0
           },
           {

@@ -16,7 +16,7 @@
       (ngSubmit)="onSubmit()"
     >
       <div *ngFor="let option of options; let i = index">
-        <mat-form-field color="accent" appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-select
             [placeholder]="option.name"
             [name]="options[i].name"
