@@ -14,5 +14,13 @@ mat-form-field {
 }
 .product__form--succes {
   background: var(--accent-color);
-  border-radius: 3px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+.product__form--succes:hover {
+  background: var(--warning-color);
+  cursor: pointer;
 }

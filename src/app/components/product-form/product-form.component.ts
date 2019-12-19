@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CartService } from "src/app/services/cart.service";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-product-form",
@@ -12,7 +13,11 @@ export class ProductFormComponent implements OnInit {
   cartSubscription;
   success: boolean = false;
 
-  constructor(private _cartService: CartService, private fb: FormBuilder) {}
+  constructor(
+    private _cartService: CartService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.cartSubscription = this._cartService.cart$.subscribe(val => {
@@ -41,5 +46,8 @@ export class ProductFormComponent implements OnInit {
     this._cartService.addToCart(cartData);
     this.success = true;
     console.log(this.cart);
+  }
+  goTo() {
+    this.router.navigate(["/landing"]);
   }
 }

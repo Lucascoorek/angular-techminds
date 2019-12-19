@@ -2,8 +2,8 @@
   <div class="product__form-wrapper">
     <div *ngIf="success; then thenBlock; else elseBlock"></div>
     <ng-template #thenBlock>
-      <div class="product__form--succes">
-        Success!
+      <div class="product__form--succes" (click)="goTo()">
+        <h1>Success!</h1>
       </div>
     </ng-template>
     <ng-template #elseBlock>

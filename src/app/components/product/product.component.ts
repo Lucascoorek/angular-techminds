@@ -19,6 +19,7 @@ export class ProductComponent implements OnInit {
   public productForm: any;
   public error: boolean;
   formSubscripion;
+  routerSubscription;
 
   constructor(
     private _route: ActivatedRoute,
@@ -28,10 +29,12 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this._route.paramMap.subscribe((params: ParamMap) => {
-      let id = parseInt(params.get("id"));
-      this.productId = id;
-    });
+    this.routerSubscription = this._route.paramMap.subscribe(
+      (params: ParamMap) => {
+        let id = parseInt(params.get("id"));
+        this.productId = id;
+      }
+    );
     this.product = this._fetchService.getProductById(this.productId);
     this.options = this.product.options;
     this.price = this.product.price;
@@ -80,5 +83,6 @@ export class ProductComponent implements OnInit {
   }
   ngOnDestroy(): void {
     this.formSubscripion.unsubscribe();
+    this.routerSubscription.unsubscribe();
   }
 }
