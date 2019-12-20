@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FetchService } from "src/app/services/fetch.service";
-import { Router } from "@angular/router";
 import { Product } from "src/app/models/Product";
+import { NavigateService } from "src/app/services/navigate.service";
 
 @Component({
   selector: "app-main",
@@ -11,7 +11,10 @@ import { Product } from "src/app/models/Product";
 export class MainComponent implements OnInit {
   products: Product[];
   subscription;
-  constructor(private fetchService: FetchService, private router: Router) {}
+  constructor(
+    private fetchService: FetchService,
+    private navigateSercive: NavigateService
+  ) {}
 
   ngOnInit() {
     this.subscription = this.fetchService.dataSource$.subscribe(data => {
@@ -19,7 +22,7 @@ export class MainComponent implements OnInit {
     });
   }
   goTo(id: number) {
-    this.router.navigate(["/product", id]);
+    this.navigateSercive.goTo("/product", id);
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

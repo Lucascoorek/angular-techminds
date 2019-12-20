@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CartService } from "src/app/services/cart.service";
 import { FormBuilder, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { NavigateService } from "src/app/services/navigate.service";
 
 @Component({
   selector: "app-product-form",
@@ -16,7 +16,7 @@ export class ProductFormComponent implements OnInit {
   constructor(
     private _cartService: CartService,
     private fb: FormBuilder,
-    private router: Router
+    private navigateService: NavigateService
   ) {}
 
   ngOnInit() {
@@ -48,6 +48,6 @@ export class ProductFormComponent implements OnInit {
     console.log(this.cart);
   }
   goTo() {
-    this.router.navigate(["/landing"]);
+    this.navigateService.goTo("/landing");
   }
 }
